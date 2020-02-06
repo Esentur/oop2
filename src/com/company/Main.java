@@ -33,9 +33,10 @@ class Calc extends JFrame {
 
     JLabel labelArea = new JLabel("Result:");
     JTextArea display = new JTextArea(1, 5);
+    JScrollPane scroll = new JScrollPane();
 
     public Calc() {
-        //Setting position for swing widgets
+        //Setting positions for swing widgets
         super("OOP 2");
         this.setBounds(100, 100, 250, 100);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -95,8 +96,11 @@ class Calc extends JFrame {
         //result-display
         container.add(labelArea);
         labelArea.setBounds(260, 10, 80, 30);
-        container.add(display);
-        display.setBounds(260, 40, 500, 360);
+        container.add(scroll);
+        scroll= new JScrollPane(display);
+        scroll.setBounds(260, 40, 500, 360);
+        getContentPane().add(scroll);
+        setLocationRelativeTo ( null );
     }
 
     class ButtonEventListener implements ActionListener {
