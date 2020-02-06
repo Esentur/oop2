@@ -5,7 +5,6 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.lang.*;
 
-
 class Calc extends JFrame {
     //Making labels, input-fields, radio-buttons, button, result-display
     JLabel labelxs = new JLabel("x start:");
@@ -34,7 +33,6 @@ class Calc extends JFrame {
 
     JLabel labelArea = new JLabel("Result:");
     JTextArea display = new JTextArea(1, 5);
-
 
     public Calc() {
         //Setting position for swing widgets
@@ -106,7 +104,6 @@ class Calc extends JFrame {
         float fxs, fxe, fstep;
         int ia, ib, ic;
 
-
         public void actionPerformed(ActionEvent e) {
 
             try {
@@ -125,10 +122,10 @@ class Calc extends JFrame {
                 fstep = Float.parseFloat(step);
 
             } catch (Exception event) {
-                display.setText("Something wrong");
+                display.setText("SOMETHING WRONG...");
             }
-            if (fxe <= fxs) {
-                display.setText("Error. Xend <= Xstart ! or You didn't enter input data! ");
+            if (fxe <= fxs || fstep <= 0) {
+                display.setText("ERROR:  Xend <= Xstart ! OR YOU ENTERED WRONG DATA ! ");
             } else {
                 float sx;
                 if (radio1.isSelected()) {
