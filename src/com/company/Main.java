@@ -105,7 +105,7 @@ class Calc extends JFrame {
         int ia, ib, ic;
 
         public void actionPerformed(ActionEvent e) {
-
+            //Getting text and converting
             try {
                 xs = inputxs.getText();
                 xe = inputxe.getText();
@@ -124,6 +124,7 @@ class Calc extends JFrame {
             } catch (Exception event) {
                 display.setText("SOMETHING WRONG...");
             }
+            //Checking input data
             if (fxe <= fxs || fstep <= 0) {
                 display.setText("ERROR:  Xend <= Xstart ! OR YOU ENTERED WRONG DATA ! ");
             } else {
