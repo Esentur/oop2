@@ -39,6 +39,7 @@ class Calc extends JFrame {
         //Setting positions for swing widgets
         super("OOP 2");
         this.setBounds(100, 100, 250, 100);
+        setSize(800, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         Container container = this.getContentPane();
@@ -97,33 +98,25 @@ class Calc extends JFrame {
         container.add(labelArea);
         labelArea.setBounds(260, 10, 80, 30);
         container.add(scroll);
-        scroll= new JScrollPane(display);
+        scroll = new JScrollPane(display);
         scroll.setBounds(260, 40, 500, 360);
         getContentPane().add(scroll);
-        setLocationRelativeTo ( null );
+        setLocationRelativeTo(null);
     }
 
     class ButtonEventListener implements ActionListener {
-        String xs, xe, a, b, c, step;
-        float fxs, fxe, fstep;
-        int ia, ib, ic;
+        float fxs, fxe, fstep, fa, fb, fc;
+        int funcNo = 0;
 
         public void actionPerformed(ActionEvent e) {
             //Getting text and converting
             try {
-                xs = inputxs.getText();
-                xe = inputxe.getText();
-                a = inputa.getText();
-                b = inputb.getText();
-                c = inputc.getText();
-                step = inputStep.getText();
-
-                fxs = Float.parseFloat(xs);
-                fxe = Float.parseFloat(xe);
-                ia = Integer.parseInt(a);
-                ib = Integer.parseInt(b);
-                ic = Integer.parseInt(c);
-                fstep = Float.parseFloat(step);
+                fxs = Float.parseFloat(inputxs.getText());
+                fxe = Float.parseFloat(inputxe.getText());
+                fa = Float.parseFloat(inputa.getText());
+                fb = Float.parseFloat(inputb.getText());
+                fc = Float.parseFloat(inputc.getText());
+                fstep = Float.parseFloat(inputStep.getText());
 
             } catch (Exception event) {
                 display.setText("SOMETHING WRONG...");
@@ -132,39 +125,16 @@ class Calc extends JFrame {
             if (fxe <= fxs || fstep <= 0) {
                 display.setText("ERROR:  Xend <= Xstart ! OR YOU ENTERED WRONG DATA ! ");
             } else {
-                float sx;
-                if (radio1.isSelected()) {
-                    display.setText("x:    y: \n");
 
-                    float i = fxs;
-                    while (i <= fxe) {
-                        sx = i;
-                        float y = (ia * (int) Math.pow(i, 2)) + (ib * sx) + ic;
-                        String sy = String.valueOf(y);
-                        display.setText(display.getText() + sx + "   " + sy + "\n");
-                        i += fstep;
-                    }
+                if (radio1.isSelected()) {
+                    funcNo = 1;
                 } else if (radio2.isSelected()) {
-                    display.setText("x:    y: \n");
-                    float i = fxs;
-                    while (i <= fxe) {
-                        sx = i;
-                        float y = (ia * (int) Math.pow(i, 3)) + (ib * i * i) + ic;
-                        String sy = String.valueOf(y);
-                        display.setText(display.getText() + sx + "   " + sy + "\n");
-                        i += fstep;
-                    }
+                    funcNo = 2;
                 } else if (radio3.isSelected()) {
-                    display.setText("x:    y: \n");
-                    float i = fxs;
-                    while (i <= fxe) {
-                        sx = i;
-                        float y = (2 * ia * i) + (ib * i) + ic;
-                        String sy = String.valueOf(y);
-                        display.setText(display.getText() + sx + "   " + sy + "\n");
-                        i += fstep;
-                    }
+                    funcNo = 3;
                 }
+                Functions func = new Functions(funcNo, fxs, fxe, fa, fb, fc, fstep);
+                display.setText(func.getResult());
             }
         }
     }
@@ -172,9 +142,8 @@ class Calc extends JFrame {
 
 public class Main {
     public static void main(String[] args) {
-        Calc app = new Calc();
-        app.setVisible(true);
-        app.setSize(800, 500);
+        Calc calc = new Calc();
+        calc.setVisible(true);
     }
 }
 
