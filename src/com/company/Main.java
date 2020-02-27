@@ -39,7 +39,6 @@ class Calc extends JFrame {
         //Setting positions for swing widgets
         super("OOP 2");
         this.setBounds(100, 100, 250, 100);
-        setSize(800, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         Container container = this.getContentPane();
@@ -78,10 +77,8 @@ class Calc extends JFrame {
         //radio-buttons
         group.add(radio1);
         radio1.setBounds(20, 270, 160, 30);
-
         group.add(radio2);
         radio2.setBounds(20, 300, 160, 30);
-
         group.add(radio3);
         radio3.setBounds(20, 330, 160, 30);
 
@@ -142,8 +139,12 @@ class Calc extends JFrame {
 
 public class Main {
     public static void main(String[] args) {
-        Calc calc = new Calc();
+       /* Calc calc = new Calc();
         calc.setVisible(true);
+        calc.setSize(800, 500);*/
+        Grafika calc = new Grafika();
+        calc.setVisible(true);
+        calc.setSize(800, 500);
     }
 }
 

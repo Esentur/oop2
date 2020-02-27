@@ -79,8 +79,7 @@ public class Grafika extends JFrame {
     }
 
     class Pan implements ActionListener {
-        int a = 0, b = 0, c = 0, xs = 0, xe = 0, i = 0;
-        int y = 0;
+        int a = 0, b = 0, c = 0, xs = 0, xe = 0;
 
         Pain pain = new Pain(this);
         Grafika gl;
